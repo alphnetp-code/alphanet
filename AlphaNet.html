@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlphaNet | Communication & Digital Services</title>
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            color: #333;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: #0f172a;
+            color: #fff;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #38bdf8;
+        }
+
+        /* Hero Section */
+        #hero {
+            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+            height: 60vh;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+
+        #hero h2 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        #hero p {
+            font-size: 18px;
+            margin-bottom: 25px;
+            color: #cbd5e1;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #38bdf8;
+            color: #fff;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #0ea5e9;
+        }
+
+        /* Services Section */
+        #services {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background: #38bdf8;
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        }
+
+        .service-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .service-card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: #0f172a;
+        }
+
+        .service-card p {
+            color: #64748b;
+            font-size: 15px;
+        }
+
+        /* Contact Section */
+        #contact {
+            background: #f1f5f9;
+            padding: 60px 0;
+        }
+
+        .contact-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 50px;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-info h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .contact-info p {
+            margin-bottom: 10px;
+            color: #475569;
+        }
+
+        .contact-form {
+            flex: 1;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            font-size: 15px;
+        }
+
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background: #0f172a;
+            color: #cbd5e1;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header .container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            nav ul li {
+                margin: 0 10px;
+            }
+            .contact-content {
+                flex-direction: column;
+            }
+            #hero h2 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>AlphaNet<span>.</span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container">
+            <h2>Your One-Stop Digital Hub</h2>
+            <p>High-quality printing, custom graphic designs, and professional communication services.</p>
+            <a href="#services" class="btn">Explore Services</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <h2 class="section-title">Our Premium Services</h2>
+            <div class="services-grid">
+                
+                <!-- Graphic Design -->
+                <div class="service-card">
+                    <div class="service-icon">🎨</div>
+                    <h3>Graphic Designs</h3>
+                    <p>Creative logos, eye-catching promotional posters, custom menus, and social media flyers tailored perfectly to elevate your business brand.</p>
+                </div>
+
+                <!-- Photo Framing -->
+                <div class="service-card">
+                    <div class="service-icon">🖼️</div>
+                    <h3>Photo Framing & Restoration</h3>
+                    <p>Premium frame selections paired with professional photo touch-ups, color balancing, and high-definition upscaling to keep your memories vivid.</p>
+                </div>
+
+                <!-- Mug Printing -->
+                <div class="service-card">
+                    <div class="service-icon">☕</div>
+                    <h3>Custom Mug Printing</h3>
+                    <p>Personalized high-quality mug prints for beautiful custom gifts, corporate branding, or special events with crisp, durable vibrant colors.</p>
+                </div>
+
+                <!-- Colour Printouts -->
+                <div class="service-card">
+                    <div class="service-icon">🖨️</div>
+                    <h3>Colour Printouts</h3>
+                    <p>Sharp, rich, and high-resolution color laser prints for documents, presentations, posters, and creative projects on premium paper stock.</p>
+                </div>
+
+                <!-- Photocopies -->
+                <div class="service-card">
+                    <div class="service-icon">📄</div>
+                    <h3>Photocopies & Binding</h3>
+                    <p>Fast, crisp, and high-volume black & white or color duplication alongside clean bookbinding services for all your essential documents.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                
+                <div class="contact-info">
+                    <h3>Visit AlphaNet Today</h3>
+                    <p>Have a project in mind or need quick printing services? Drop by our shop or reach out to us directly for quick quotes and bulk order inquiries.</p>
+                    <br>
+                    <p>📍 <strong>Location:</strong> Mahiyanganaya, Sri Lanka</p>
+                    <p>📞 <strong>Phone:</strong> Available upon request</p>
+                    <p>✉️ <strong>Email:</strong> info@alphanet.com</p>
+                </div>
+
+                <div class="contact-form">
+                    <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Thank you for reaching out to AlphaNet! We will get back to you soon.');">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" required placeholder="Your Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" required placeholder="Your Email">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Requirements</label>
+                            <textarea id="message" required placeholder="Tell us what you need (e.g., Mug printing details, Poster sizes...)"></textarea>
+                        </div>
+                        <button type="submit" class="btn" style="border: none; cursor: pointer; width: 100%;">Send Message</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 AlphaNet Communication Shop. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
